@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: sms-verify
+  datasource:
+    url: ${DB_URL :jdbc:postgresql://localhost:9876/sms-push}
+    username: ${SPRING_DATASOURCE_USERNAME :postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD :sms-push}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:db/changelog/main-changelog.xml
+    enabled: true
+
+server:
+  port: ${SPRING_PORT :1240}
+
+twillio:
+  account-sid: ${TWILLIO_ACCOUNT_SID :ACa1df30840532913615c4f32f4091a548}
+  auth-token: ${TWILLIO_AUTH_TOKEN :5087ca2e84e25d414914969d0ead1d80}
+  from-number: ${TWILLIO_FROM_NUMBER :+19382385975}

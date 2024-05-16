@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: sms-push-backend
+    ports:
+      - "9095:4511"
+    depends_on:
+      - db
+    environment:
+      DB_URL: jdbc:postgresql://db:9876/sms-push
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: sms-push
+      SPRING_PORT: 4511
+  db:
+    image: postgres:latest
+    container_name: sms-push-postgres
+    ports:
+      - "9876:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sms-push
+      POSTGRES_DB: sms-push
