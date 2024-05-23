@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@Data
 public class TwillioConfig {
 
     @Value("${twillio.account-sid}")
